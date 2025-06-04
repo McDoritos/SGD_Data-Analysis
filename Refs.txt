@@ -24,3 +24,7 @@ https://ec.europa.eu/eurostat/databrowser/view/ilc_hch10__custom_16964456/defaul
 https://www.scrapehero.com/location-reports/Burger%20King-USA/
 https://worldpopulationreview.com/country-rankings/most-mcdonalds-by-country#sources
 https://en.wikipedia.org/wiki/List_of_countries_with_Burger_King_franchises
+
+# GDP
+https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?end=2023&start=1961&view=chart
+https://ec.europa.eu/eurostat/databrowser/view/tec00115/default/table?lang=en
