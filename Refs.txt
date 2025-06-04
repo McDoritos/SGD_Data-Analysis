@@ -1,0 +1,26 @@
+https://www.cdc.gov/nchs/nhanes/about/index.html - https://www.cdc.gov/nchs/nhanes/visualization/index.htm
+
+# FOOD CONSUPTION AMERICAN 
+https://data.cdc.gov/National-Center-for-Health-Statistics/NHANES-Select-Mean-Dietary-Intake-Estimates/8wmh-yzz9/data preview
+
+# OBESITY AMERICA
+https://data.cdc.gov/National-Center-for-Health-Statistics/NHANES-Select-Chronic-Conditions-Prevalence-Estima/i667-sjhg/data preview
+
+# PHYSICAL ACTIVITY EUROPE
+https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Sport_participation_-_practicing_sport_and_physical_activity#Source_data_for_tables_and_graphs
+https://ec.europa.eu/eurostat/databrowser/view/ilc_scp03$dv_551/default/table?lang=en&category=sprt.sprt_pcs.sprt_pcs_ilc
+
+# FOOD CONSUPTION EUROPE
+https://www.efsa.europa.eu/en/data-report/food-consumption-data
+https://data.europa.eu/data/datasets/the-efsa-comprehensive-european-food-consumption-database?locale=en
+
+#OBESITY EUROPE
+https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Overweight_and_obesity_-_BMI_statistics#Data_sources
+https://ec.europa.eu/eurostat/data/database?node_code=ilc_hch
+https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Overweight_and_obesity_-_BMI_statistics#Education_level_and_overweight
+https://ec.europa.eu/eurostat/databrowser/view/ilc_hch10__custom_16964456/default/table?lang=en&page=time:2022
+
+# BK e MAC
+https://www.scrapehero.com/location-reports/Burger%20King-USA/
+https://worldpopulationreview.com/country-rankings/most-mcdonalds-by-country#sources
+https://en.wikipedia.org/wiki/List_of_countries_with_Burger_King_franchises
