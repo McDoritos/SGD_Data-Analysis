@@ -13,6 +13,7 @@ https://ec.europa.eu/eurostat/databrowser/view/ilc_scp03$dv_551/default/table?la
 # FOOD CONSUPTION EUROPE
 https://www.efsa.europa.eu/en/data-report/food-consumption-data
 https://data.europa.eu/data/datasets/the-efsa-comprehensive-european-food-consumption-database?locale=en
+https://www.efsa.europa.eu/en/data-report/food-composition-data#:~:text=The%20food%20composition%20database%20gives%20information%20on%20the,France%2C%20Germany%2C%20Italy%2C%20Netherlands%2C%20Sweden%2C%20and%20United%20Kingdom.
 
 #OBESITY EUROPE
 https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Overweight_and_obesity_-_BMI_statistics#Data_sources
@@ -28,3 +29,7 @@ https://en.wikipedia.org/wiki/List_of_countries_with_Burger_King_franchises
 # GDP
 https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG?end=2023&start=1961&view=chart
 https://ec.europa.eu/eurostat/databrowser/view/tec00115/default/table?lang=en
+
+# World Population
+https://data.worldbank.org/indicator/EN.POP.DNST
+https://pt.wikipedia.org/wiki/Lista_de_pa%C3%ADses_por_densidade_populacional

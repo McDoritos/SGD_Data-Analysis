@@ -1,0 +1,333 @@
+Nutrient,Food class level 1,Avg (Concentration levels)
+Alpha-tocopherol,"Additives,flavours, baking and processing aids",0.01
+Alpha-tocopherol,Alcoholic beverages,0.02
+Alpha-tocopherol,Animal and vegetable fats and oils,14.08
+Alpha-tocopherol,"Coffee, cocoa, tea and infusions",0.86
+Alpha-tocopherol,Composite dishes,1.12
+Alpha-tocopherol,Eggs and egg products,2.07
+Alpha-tocopherol,"Fish, seafood, amphibians, reptiles and invertebrates",2.05
+Alpha-tocopherol,Food products for young population,1.83
+Alpha-tocopherol,Fruit and fruit products,0.68
+Alpha-tocopherol,Fruit and vegetable juices and nectars,1.01
+Alpha-tocopherol,Grains and grain-based products,1.13
+Alpha-tocopherol,Human milk,0.5
+Alpha-tocopherol,"Legumes, nuts, oilseeds and spices",5.01
+Alpha-tocopherol,Meat and meat products,0.44
+Alpha-tocopherol,Milk and dairy products,0.36
+Alpha-tocopherol,"Products for non-standard diets, food imitates and food supplements or fortifying agents",1.08
+Alpha-tocopherol,"Seasoning, sauces and condiments",2.62
+Alpha-tocopherol,"Starchy roots or tubers and products thereof, sugar plants",0.29
+Alpha-tocopherol,"Sugar, confectionery and water-based sweet desserts",1.43
+Alpha-tocopherol,Vegetables and vegetable products,0.84
+Alpha-tocopherol,Water and water-based beverages,0.07
+Calcium (Ca),"Additives,flavours, baking and processing aids",269.04
+Calcium (Ca),Alcoholic beverages,7.24
+Calcium (Ca),Animal and vegetable fats and oils,14.44
+Calcium (Ca),"Coffee, cocoa, tea and infusions",103.6
+Calcium (Ca),Composite dishes,59.82
+Calcium (Ca),Eggs and egg products,82.7
+Calcium (Ca),"Fish, seafood, amphibians, reptiles and invertebrates",50.39
+Calcium (Ca),Food products for young population,149.62
+Calcium (Ca),Fruit and fruit products,22.19
+Calcium (Ca),Fruit and vegetable juices and nectars,20.93
+Calcium (Ca),Grains and grain-based products,45.46
+Calcium (Ca),Human milk,29.5
+Calcium (Ca),"Legumes, nuts, oilseeds and spices",186.2
+Calcium (Ca),Meat and meat products,15.92
+Calcium (Ca),Milk and dairy products,402.31
+Calcium (Ca),"Products for non-standard diets, food imitates and food supplements or fortifying agents",133.44
+Calcium (Ca),"Seasoning, sauces and condiments",110.39
+Calcium (Ca),"Starchy roots or tubers and products thereof, sugar plants",21.77
+Calcium (Ca),"Sugar, confectionery and water-based sweet desserts",106.07
+Calcium (Ca),Vegetables and vegetable products,67.49
+Calcium (Ca),Water and water-based beverages,9.12
+Copper (Cu),"Additives,flavours, baking and processing aids",0.09
+Copper (Cu),Alcoholic beverages,0.04
+Copper (Cu),Animal and vegetable fats and oils,0.01
+Copper (Cu),"Coffee, cocoa, tea and infusions",0.64
+Copper (Cu),Composite dishes,0.12
+Copper (Cu),Eggs and egg products,0.17
+Copper (Cu),"Fish, seafood, amphibians, reptiles and invertebrates",0.31
+Copper (Cu),Food products for young population,0.12
+Copper (Cu),Fruit and fruit products,0.11
+Copper (Cu),Fruit and vegetable juices and nectars,0.06
+Copper (Cu),Grains and grain-based products,0.21
+Copper (Cu),Human milk,0.04
+Copper (Cu),"Legumes, nuts, oilseeds and spices",0.69
+Copper (Cu),Meat and meat products,0.52
+Copper (Cu),Milk and dairy products,0.07
+Copper (Cu),"Products for non-standard diets, food imitates and food supplements or fortifying agents",0.37
+Copper (Cu),"Seasoning, sauces and condiments",0.19
+Copper (Cu),"Starchy roots or tubers and products thereof, sugar plants",0.14
+Copper (Cu),"Sugar, confectionery and water-based sweet desserts",0.28
+Copper (Cu),Vegetables and vegetable products,0.15
+Copper (Cu),Water and water-based beverages,0.02
+Magnesium (Mg),"Additives,flavours, baking and processing aids",24.21
+Magnesium (Mg),Alcoholic beverages,6.59
+Magnesium (Mg),Animal and vegetable fats and oils,2.81
+Magnesium (Mg),"Coffee, cocoa, tea and infusions",154.8
+Magnesium (Mg),Composite dishes,19.45
+Magnesium (Mg),Eggs and egg products,19.25
+Magnesium (Mg),"Fish, seafood, amphibians, reptiles and invertebrates",35.17
+Magnesium (Mg),Food products for young population,25.04
+Magnesium (Mg),Fruit and fruit products,13.73
+Magnesium (Mg),Fruit and vegetable juices and nectars,13.34
+Magnesium (Mg),Grains and grain-based products,52.45
+Magnesium (Mg),Human milk,3
+Magnesium (Mg),"Legumes, nuts, oilseeds and spices",143.52
+Magnesium (Mg),Meat and meat products,21.15
+Magnesium (Mg),Milk and dairy products,21.21
+Magnesium (Mg),"Products for non-standard diets, food imitates and food supplements or fortifying agents",47.75
+Magnesium (Mg),"Seasoning, sauces and condiments",51.31
+Magnesium (Mg),"Starchy roots or tubers and products thereof, sugar plants",31.02
+Magnesium (Mg),"Sugar, confectionery and water-based sweet desserts",46.31
+Magnesium (Mg),Vegetables and vegetable products,25.17
+Magnesium (Mg),Water and water-based beverages,2.08
+niacin equivalents,"Additives,flavours, baking and processing aids",2.53
+niacin equivalents,Alcoholic beverages,0.38
+niacin equivalents,Animal and vegetable fats and oils,0.21
+niacin equivalents,"Coffee, cocoa, tea and infusions",9.16
+niacin equivalents,Composite dishes,3.01
+niacin equivalents,Eggs and egg products,5.4
+niacin equivalents,"Fish, seafood, amphibians, reptiles and invertebrates",6.97
+niacin equivalents,Food products for young population,2.87
+niacin equivalents,Fruit and fruit products,0.62
+niacin equivalents,Fruit and vegetable juices and nectars,1.43
+niacin equivalents,Grains and grain-based products,3.61
+niacin equivalents,Human milk,0.7
+niacin equivalents,"Legumes, nuts, oilseeds and spices",5.59
+niacin equivalents,Meat and meat products,8.95
+niacin equivalents,Milk and dairy products,2.99
+niacin equivalents,"Products for non-standard diets, food imitates and food supplements or fortifying agents",2.85
+niacin equivalents,"Seasoning, sauces and condiments",3.4
+niacin equivalents,"Starchy roots or tubers and products thereof, sugar plants",1.73
+niacin equivalents,"Sugar, confectionery and water-based sweet desserts",1.14
+niacin equivalents,Vegetables and vegetable products,2.13
+niacin equivalents,Water and water-based beverages,0.27
+Phosphorus (P),"Additives,flavours, baking and processing aids",894.58
+Phosphorus (P),Alcoholic beverages,15.07
+Phosphorus (P),Animal and vegetable fats and oils,24.58
+Phosphorus (P),"Coffee, cocoa, tea and infusions",191.5
+Phosphorus (P),Composite dishes,109.03
+Phosphorus (P),Eggs and egg products,287.9
+Phosphorus (P),"Fish, seafood, amphibians, reptiles and invertebrates",232.41
+Phosphorus (P),Food products for young population,142.55
+Phosphorus (P),Fruit and fruit products,23.09
+Phosphorus (P),Fruit and vegetable juices and nectars,24.51
+Phosphorus (P),Grains and grain-based products,171.37
+Phosphorus (P),Human milk,12.5
+Phosphorus (P),"Legumes, nuts, oilseeds and spices",296.75
+Phosphorus (P),Meat and meat products,200.01
+Phosphorus (P),Milk and dairy products,311.97
+Phosphorus (P),"Products for non-standard diets, food imitates and food supplements or fortifying agents",187.86
+Phosphorus (P),"Seasoning, sauces and condiments",115.39
+Phosphorus (P),"Starchy roots or tubers and products thereof, sugar plants",71.64
+Phosphorus (P),"Sugar, confectionery and water-based sweet desserts",96.57
+Phosphorus (P),Vegetables and vegetable products,64.7
+Phosphorus (P),Water and water-based beverages,8.68
+Potassium (K),"Additives,flavours, baking and processing aids",194.03
+Potassium (K),Alcoholic beverages,49.11
+Potassium (K),Animal and vegetable fats and oils,26.53
+Potassium (K),"Coffee, cocoa, tea and infusions","1,278.89"
+Potassium (K),Composite dishes,191.86
+Potassium (K),Eggs and egg products,232.59
+Potassium (K),"Fish, seafood, amphibians, reptiles and invertebrates",306.13
+Potassium (K),Food products for young population,276.03
+Potassium (K),Fruit and fruit products,183.55
+Potassium (K),Fruit and vegetable juices and nectars,210.61
+Potassium (K),Grains and grain-based products,205.69
+Potassium (K),Human milk,52
+Potassium (K),"Legumes, nuts, oilseeds and spices",682.51
+Potassium (K),Meat and meat products,261.24
+Potassium (K),Milk and dairy products,158.44
+Potassium (K),"Products for non-standard diets, food imitates and food supplements or fortifying agents",318.37
+Potassium (K),"Seasoning, sauces and condiments",837.17
+Potassium (K),"Starchy roots or tubers and products thereof, sugar plants",460.7
+Potassium (K),"Sugar, confectionery and water-based sweet desserts",234.5
+Potassium (K),Vegetables and vegetable products,315.93
+Potassium (K),Water and water-based beverages,17.6
+riboflavin,"Additives,flavours, baking and processing aids",0.25
+riboflavin,Alcoholic beverages,0.02
+riboflavin,Animal and vegetable fats and oils,0.01
+riboflavin,"Coffee, cocoa, tea and infusions",0.31
+riboflavin,Composite dishes,0.11
+riboflavin,Eggs and egg products,0.61
+riboflavin,"Fish, seafood, amphibians, reptiles and invertebrates",0.16
+riboflavin,Food products for young population,0.2
+riboflavin,Fruit and fruit products,0.04
+riboflavin,Fruit and vegetable juices and nectars,0.04
+riboflavin,Grains and grain-based products,0.13
+riboflavin,"Legumes, nuts, oilseeds and spices",0.17
+riboflavin,Meat and meat products,0.55
+riboflavin,Milk and dairy products,0.29
+riboflavin,"Products for non-standard diets, food imitates and food supplements or fortifying agents",0.12
+riboflavin,"Seasoning, sauces and condiments",0.11
+riboflavin,"Starchy roots or tubers and products thereof, sugar plants",0.05
+riboflavin,"Sugar, confectionery and water-based sweet desserts",0.11
+riboflavin,Vegetables and vegetable products,0.13
+riboflavin,Water and water-based beverages,0.02
+thiamin,"Additives,flavours, baking and processing aids",0.05
+thiamin,Alcoholic beverages,0.01
+thiamin,Animal and vegetable fats and oils,0
+thiamin,"Coffee, cocoa, tea and infusions",0.04
+thiamin,Composite dishes,0.09
+thiamin,Eggs and egg products,0.14
+thiamin,"Fish, seafood, amphibians, reptiles and invertebrates",0.1
+thiamin,Food products for young population,0.19
+thiamin,Fruit and fruit products,0.03
+thiamin,Fruit and vegetable juices and nectars,0.06
+thiamin,Grains and grain-based products,0.19
+thiamin,"Legumes, nuts, oilseeds and spices",0.34
+thiamin,Meat and meat products,0.26
+thiamin,Milk and dairy products,0.05
+thiamin,"Products for non-standard diets, food imitates and food supplements or fortifying agents",0.1
+thiamin,"Seasoning, sauces and condiments",0.38
+thiamin,"Starchy roots or tubers and products thereof, sugar plants",0.09
+thiamin,"Sugar, confectionery and water-based sweet desserts",0.04
+thiamin,Vegetables and vegetable products,0.08
+thiamin,Water and water-based beverages,0.03
+Total iron,"Additives,flavours, baking and processing aids",4.89
+Total iron,Alcoholic beverages,0.33
+Total iron,Animal and vegetable fats and oils,0.09
+Total iron,"Coffee, cocoa, tea and infusions",10.4
+Total iron,Composite dishes,0.99
+Total iron,Eggs and egg products,3.31
+Total iron,"Fish, seafood, amphibians, reptiles and invertebrates",1.49
+Total iron,Food products for young population,2.33
+Total iron,Fruit and fruit products,0.61
+Total iron,Fruit and vegetable juices and nectars,0.46
+Total iron,Grains and grain-based products,2.15
+Total iron,"Legumes, nuts, oilseeds and spices",7.38
+Total iron,Meat and meat products,3.5
+Total iron,Milk and dairy products,0.22
+Total iron,"Products for non-standard diets, food imitates and food supplements or fortifying agents",1.61
+Total iron,"Seasoning, sauces and condiments",3.48
+Total iron,"Starchy roots or tubers and products thereof, sugar plants",1.08
+Total iron,"Sugar, confectionery and water-based sweet desserts",2.36
+Total iron,Vegetables and vegetable products,1.37
+Total iron,Water and water-based beverages,0.22
+Total Selenium,"Additives,flavours, baking and processing aids",0.63
+Total Selenium,Alcoholic beverages,0.42
+Total Selenium,Animal and vegetable fats and oils,0.4
+Total Selenium,"Coffee, cocoa, tea and infusions",4.24
+Total Selenium,Composite dishes,6.99
+Total Selenium,Eggs and egg products,31.65
+Total Selenium,"Fish, seafood, amphibians, reptiles and invertebrates",36.59
+Total Selenium,Food products for young population,2.82
+Total Selenium,Fruit and fruit products,0.71
+Total Selenium,Fruit and vegetable juices and nectars,0.56
+Total Selenium,Grains and grain-based products,4.95
+Total Selenium,Human milk,1.05
+Total Selenium,"Legumes, nuts, oilseeds and spices",6.53
+Total Selenium,Meat and meat products,28.62
+Total Selenium,Milk and dairy products,6.76
+Total Selenium,"Products for non-standard diets, food imitates and food supplements or fortifying agents",2.26
+Total Selenium,"Seasoning, sauces and condiments",3.81
+Total Selenium,"Starchy roots or tubers and products thereof, sugar plants",1.2
+Total Selenium,"Sugar, confectionery and water-based sweet desserts",3.51
+Total Selenium,Vegetables and vegetable products,2.59
+Total Selenium,Water and water-based beverages,0.03
+vitamin B-12,"Additives,flavours, baking and processing aids",0.01
+vitamin B-12,Alcoholic beverages,0.03
+vitamin B-12,Animal and vegetable fats and oils,0.11
+vitamin B-12,"Coffee, cocoa, tea and infusions",0.16
+vitamin B-12,Composite dishes,0.76
+vitamin B-12,Eggs and egg products,3.46
+vitamin B-12,"Fish, seafood, amphibians, reptiles and invertebrates",4.41
+vitamin B-12,Food products for young population,0.43
+vitamin B-12,Fruit and fruit products,0.01
+vitamin B-12,Fruit and vegetable juices and nectars,0.12
+vitamin B-12,Grains and grain-based products,0.13
+vitamin B-12,Human milk,0.04
+vitamin B-12,"Legumes, nuts, oilseeds and spices",0
+vitamin B-12,Meat and meat products,7.12
+vitamin B-12,Milk and dairy products,0.88
+vitamin B-12,"Products for non-standard diets, food imitates and food supplements or fortifying agents",0.27
+vitamin B-12,"Seasoning, sauces and condiments",0.16
+vitamin B-12,"Starchy roots or tubers and products thereof, sugar plants",0
+vitamin B-12,"Sugar, confectionery and water-based sweet desserts",0.12
+vitamin B-12,Vegetables and vegetable products,0
+vitamin B-12,Water and water-based beverages,0.03
+vitamin B-6,"Additives,flavours, baking and processing aids",0.14
+vitamin B-6,Alcoholic beverages,0.02
+vitamin B-6,Animal and vegetable fats and oils,0.09
+vitamin B-6,"Coffee, cocoa, tea and infusions",0.12
+vitamin B-6,Composite dishes,0.13
+vitamin B-6,Eggs and egg products,0.18
+vitamin B-6,"Fish, seafood, amphibians, reptiles and invertebrates",0.33
+vitamin B-6,Food products for young population,0.14
+vitamin B-6,Fruit and fruit products,0.07
+vitamin B-6,Fruit and vegetable juices and nectars,0.23
+vitamin B-6,Grains and grain-based products,0.21
+vitamin B-6,Human milk,0.01
+vitamin B-6,"Legumes, nuts, oilseeds and spices",0.24
+vitamin B-6,Meat and meat products,0.34
+vitamin B-6,Milk and dairy products,0.08
+vitamin B-6,"Products for non-standard diets, food imitates and food supplements or fortifying agents",0.17
+vitamin B-6,"Seasoning, sauces and condiments",0.11
+vitamin B-6,"Starchy roots or tubers and products thereof, sugar plants",0.2
+vitamin B-6,"Sugar, confectionery and water-based sweet desserts",0.05
+vitamin B-6,Vegetables and vegetable products,0.14
+vitamin B-6,Water and water-based beverages,0.02
+vitamin E; alpha-tocopherol equiv from E vitamer activities,"Additives,flavours, baking and processing aids",0
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Alcoholic beverages,0.04
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Animal and vegetable fats and oils,15.49
+vitamin E; alpha-tocopherol equiv from E vitamer activities,"Coffee, cocoa, tea and infusions",0.75
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Composite dishes,1.17
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Eggs and egg products,1.52
+vitamin E; alpha-tocopherol equiv from E vitamer activities,"Fish, seafood, amphibians, reptiles and invertebrates",1.94
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Food products for young population,1.72
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Fruit and fruit products,0.6
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Fruit and vegetable juices and nectars,1.04
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Grains and grain-based products,1.43
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Human milk,0.32
+vitamin E; alpha-tocopherol equiv from E vitamer activities,"Legumes, nuts, oilseeds and spices",4.6
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Meat and meat products,0.4
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Milk and dairy products,0.36
+vitamin E; alpha-tocopherol equiv from E vitamer activities,"Products for non-standard diets, food imitates and food supplements or fortifying agents",1.1
+vitamin E; alpha-tocopherol equiv from E vitamer activities,"Seasoning, sauces and condiments",1.94
+vitamin E; alpha-tocopherol equiv from E vitamer activities,"Starchy roots or tubers and products thereof, sugar plants",0.41
+vitamin E; alpha-tocopherol equiv from E vitamer activities,"Sugar, confectionery and water-based sweet desserts",1.55
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Vegetables and vegetable products,0.7
+vitamin E; alpha-tocopherol equiv from E vitamer activities,Water and water-based beverages,0.06
+vitamin K,"Additives,flavours, baking and processing aids",0
+vitamin K,Alcoholic beverages,0.11
+vitamin K,Animal and vegetable fats and oils,25.62
+vitamin K,"Coffee, cocoa, tea and infusions",26.76
+vitamin K,Composite dishes,9.79
+vitamin K,Eggs and egg products,3.92
+vitamin K,"Fish, seafood, amphibians, reptiles and invertebrates",0.57
+vitamin K,Food products for young population,10.6
+vitamin K,Fruit and fruit products,3.77
+vitamin K,Fruit and vegetable juices and nectars,5.15
+vitamin K,Grains and grain-based products,3.2
+vitamin K,"Legumes, nuts, oilseeds and spices",9.46
+vitamin K,Meat and meat products,7.77
+vitamin K,Milk and dairy products,0.48
+vitamin K,"Products for non-standard diets, food imitates and food supplements or fortifying agents",2.04
+vitamin K,"Seasoning, sauces and condiments",6.86
+vitamin K,"Starchy roots or tubers and products thereof, sugar plants",0.69
+vitamin K,"Sugar, confectionery and water-based sweet desserts",0.99
+vitamin K,Vegetables and vegetable products,63.36
+vitamin K,Water and water-based beverages,0.92
+Zinc (Zn),"Additives,flavours, baking and processing aids",1.2
+Zinc (Zn),Alcoholic beverages,0.09
+Zinc (Zn),Animal and vegetable fats and oils,0.14
+Zinc (Zn),"Coffee, cocoa, tea and infusions",1.33
+Zinc (Zn),Composite dishes,1.01
+Zinc (Zn),Eggs and egg products,1.79
+Zinc (Zn),"Fish, seafood, amphibians, reptiles and invertebrates",1.64
+Zinc (Zn),Food products for young population,1.07
+Zinc (Zn),Fruit and fruit products,0.22
+Zinc (Zn),Fruit and vegetable juices and nectars,0.17
+Zinc (Zn),Grains and grain-based products,1.45
+Zinc (Zn),Human milk,0.3
+Zinc (Zn),"Legumes, nuts, oilseeds and spices",2.57
+Zinc (Zn),Meat and meat products,2.91
+Zinc (Zn),Milk and dairy products,1.91
+Zinc (Zn),"Products for non-standard diets, food imitates and food supplements or fortifying agents",1.21
+Zinc (Zn),"Seasoning, sauces and condiments",0.65
+Zinc (Zn),"Starchy roots or tubers and products thereof, sugar plants",0.47
+Zinc (Zn),"Sugar, confectionery and water-based sweet desserts",0.64
+Zinc (Zn),Vegetables and vegetable products,0.55
+Zinc (Zn),Water and water-based beverages,0.03

@@ -1,0 +1,63 @@
+| Foodex L1 (Europeu)                                | Food class level 1 (Composição)                            |
+| -------------------------------------------------- | ---------------------------------------------------------- |
+| Grains and grain-based products                    | Grains and grain-based products                            |
+| Vegetables and vegetable products (including fungi | Vegetables and vegetable products                          |
+| Starchy roots and tubers                           | Starchy roots or tubers and products thereof, sugar plants |
+| Legumes, nuts and oilseeds                         | Legumes, nuts, oilseeds and spices                         |
+| Fruit and fruit products                           | Fruit and fruit products                                   |
+| Meat and meat products (including edible offal)    | Meat and meat products                                     |
+| Fish and other seafood (including amphibians, rept | Fish, seafood, amphibians, reptiles and invertebrates      |
+| Milk and dairy products                            | Milk and dairy products                                    |
+| Eggs and egg products                              | Eggs and egg products                                      |
+| Sugar and confectionary                            | Sugar, confectionery and water-based sweet desserts        |
+| Animal and vegetable fats and oils                 | Animal and vegetable fats and oils                         |
+| Fruit and vegetable juices                         | Fruit and vegetable juices and nectars                     |
+| Alcoholic beverages                                | Alcoholic beverages                                        |
+
+
+foodex_l1 = [
+    "Grains and grain-based products",
+    "Vegetables and vegetable products (including fungi",
+    "Starchy roots and tubers",
+    "Legumes, nuts and oilseeds",
+    "Fruit and fruit products",
+    "Meat and meat products (including edible offal)",
+    "Fish and other seafood (including amphibians, rept",
+    "Milk and dairy products",
+    "Eggs and egg products",
+    "Sugar and confectionary",
+    "Animal and vegetable fats and oils",
+    "Fruit and vegetable juices",
+    "Non-alcoholic beverages (excepting milk based beve",
+    "Alcoholic beverages",
+    "Drinking water (water without any additives except",
+    "Herbs, spices and condiments",
+    "Food for infants and small children",
+    "Products for special nutritional use",
+    "Composite food (including frozen products)",
+    "Snacks, desserts, and other foods"
+]
+
+food_class_lvl1 = [
+    "Additives,flavours, baking and processing aids",
+    "Alcoholic beverages",
+    "Animal and vegetable fats and oils",
+    "Coffee, cocoa, tea and infusions",
+    "Composite dishes",
+    "Eggs and egg products",
+    "Fish, seafood, amphibians, reptiles and invertebrates",
+    "Food products for young population",
+    "Fruit and fruit products",
+    "Fruit and vegetable juices and nectars",
+    "Grains and grain-based products",
+    "Human milk",
+    "Legumes, nuts, oilseeds and spices",
+    "Meat and meat products",
+    "Milk and dairy products",
+    "Products for non-standard diets, food imitates and food supplements or fortifying agents",
+    "Seasoning, sauces and condiments",
+    "Starchy roots or tubers and products thereof, sugar plants",
+    "Sugar, confectionery and water-based sweet desserts",
+    "Vegetables and vegetable products",
+    "Water and water-based beverages"
+]
