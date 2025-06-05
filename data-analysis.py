@@ -2,6 +2,11 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import r2_score, mean_absolute_error, root_mean_squared_error
+from sklearn.preprocessing import StandardScaler
 
 def read_csv(file_name):
     df = pd.read_csv(file_name)
@@ -18,43 +23,6 @@ def read_xlsx(file_name, spreadsheet):
     return df
 
 def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,df_obee,df_paa,df_pae,df_fc,df_pope):
-    # df_treated must have fooddiet, country, gdp, bk, mac, obesity and physicalactivity per fooddiet
-    #print(df_fda.columns)
-
-    #unique_values = {
-    #    'Sex': df_fda['Sex'].unique(),
-    #    'Age Group': df_fda['Age Group'].unique(),
-    #    'Race and Hispanic Origin': df_fda['Race and Hispanic Origin'].unique(),
-    #    'Nutrient': df_fda['Nutrient'].unique()
-    #}
-
-    #for col, values in unique_values.items():
-    #    print(f"\n{col}:")
-    #    for value in values:
-    #        print(f" - {value}")
-
-    #print(df_fde.columns)
-
-    #unique_values = {
-    #    'Food class level 1': df_fc['Food class level 1'].unique()
-    #}
-#
-    #for col, values in unique_values.items():
-    #    print(f"\n{col}:")
-    #    for value in values:
-    #        print(f" - {value}")
-#
-    #unique_values = {
-    #    'Country': df_fde['Country'].unique(),
-    #    'Pop Class': df_fde['Pop Class'].unique(),
-    #    'Foodex L1': df_fde['Foodex L1'].unique()
-    #}
-#
-    #for col, values in unique_values.items():
-    #    print(f"\n{col}:")
-    #    for value in values:
-    #        print(f" - {value}")
-
     # -------------------------------
     # 1. Seleção de nutrientes americanos para o dataset americano (df_fda)
     # -------------------------------
@@ -111,16 +79,13 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
         .agg({'Mean': 'mean'})
     )
 
-    # Definir Pop Class como 'All' para o dataframe agregado
     df_all_class['Pop Class'] = 'All'
 
-    # Reordenar colunas para manter padrão
     df_all_class = df_all_class[['Country', 'Pop Class', 'Foodex L1', 'Mean']]
 
     # Concatenar dados originais filtrados com agregados (Pop Class = 'All')
     df_fde_treated = pd.concat([df_filtered, df_all_class], ignore_index=True)
 
-    # Filtrar apenas Pop Class 'All'
     df_fde_treated = df_fde_treated[df_fde_treated['Pop Class'] == 'All']
 
     print("Dados europeus de food diet tratados (df_fde_treated):")
@@ -222,7 +187,7 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
 
     df_final = pd.DataFrame({'Country': sorted(list(all_countries))})
 
-    # 2. Pivotar dados de consumo alimentar
+    # 2. Categorias alimentares para colunas
     food_consumption_pivoted = df_fde_treated.pivot_table(
         index='Country',
         columns='Foodex L1',
@@ -237,8 +202,7 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
         for col in food_consumption_pivoted.columns
     ]
 
-    # ARREDONDAR OS VALORES PARA 2 CASAS DECIMAIS
-    # Identificar colunas de consumo (todas exceto 'Country')
+    # Identificar colunas de consumo
     consumo_cols = [col for col in food_consumption_pivoted.columns if col != 'Country']
     food_consumption_pivoted[consumo_cols] = food_consumption_pivoted[consumo_cols].round(2)
 
@@ -248,7 +212,7 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
                     on='Country',
                     how='left')
 
-    # 4. Juntar dados de PIB
+    # 4. Juntar dados de gdp
     df_final = pd.merge(df_final, 
                     df_gdpe.rename(columns={'Country Name': 'Country', 2017: 'GDP_2017'}),
                     on='Country',
@@ -279,45 +243,41 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
     # 9. ADIÇÃO DOS DADOS POPULACIONAIS COMPLETOS
     df_pope_clean = df_pope[['Country', 'Population Density', 'Population', 'Area']].copy()
 
-    # Padronizar nomes de países (opcional, mas recomendado)
+    # Padronizar nomes de países
     df_pope_clean['Country'] = df_pope_clean['Country'].str.strip().str.title()
     df_final['Country'] = df_final['Country'].str.strip().str.title()
 
-    # Juntar dados populacionais completos
     df_final = pd.merge(df_final,
                     df_pope_clean,
                     on='Country',
                     how='left')
 
-    # Renomear colunas para maior clareza (opcional)
+    # Renomeação
     df_final = df_final.rename(columns={
         'Population Density': 'Pop_Density',
         'Area': 'Area_km2'
     })
 
-    # Reordenar colunas (opcional)
+    # Reordenação de colunas
     first_cols = ['Country', 'Population', 'Pop_Density', 'Area_km2']
     other_cols = [col for col in df_final.columns if col not in first_cols]
     df_final = df_final[first_cols + other_cols]
 
     # Remoção e tratamento de dados e colunas
-
     df_final = df_final[df_final['Obesity_Rate_Europe'].notna()]
     df_final = df_final[df_final['Consumo_Alcoholic_beverages'].notna()]
     df_final = df_final.drop(columns=['Consumo_Food_for_infants_and_small_children'])
     df_final = df_final.drop(columns=['Consumo_Products_for_special_nutritional_use'])
     df_final['Physical_Activity_4plus_times'] = df_final['Physical_Activity_4plus_times'].fillna(
     round(df_final['Physical_Activity_4plus_times'].mean(),2))
-    # Verificar países removidos (opcional)
+
     removed_countries = set(all_countries) - set(df_final['Country'])
     if removed_countries:
         print("\nPaíses removidos por falta de dados de obesidade:")
         print(sorted(removed_countries))
 
-    # Ordenar e reindexar após filtragem
     df_final = df_final.sort_values('Country').reset_index(drop=True)
 
-    # Verificar resultado
     print("Dataset consolidado final com todos os dados populacionais:")
     print(df_final.head())
     df_final.to_csv('consolidated_data_by_country.csv', index=False)
@@ -329,19 +289,16 @@ def create_features(df_final):
 
     for col in cols_to_convert:
         if col in df_final.columns:
-            # Converter para string primeiro para lidar com formatação (como vírgulas decimais)
             df_final[col] = pd.to_numeric(df_final[col].astype(str).str.replace(',', '.'), errors='coerce')
         else:
             print(f"Aviso: Coluna {col} não encontrada no DataFrame")
 
-    # 2. Calcular as métricas de fast food
     if all(col in df_final.columns for col in cols_to_convert):
         missing_values = df_final[cols_to_convert].isnull().sum()
         if missing_values.any():
             print("\nValores faltantes após conversão:")
             print(missing_values)
 
-        # Cálculos
         df_final['Total_FastFood_Count'] = df_final['BurgerKing_Count'].fillna(0) + df_final['McDonalds_Count'].fillna(0)
 
         with np.errstate(divide='ignore', invalid='ignore'):
@@ -368,15 +325,17 @@ def create_features(df_final):
     else:
         print("Aviso: Não foi possível calcular as métricas - colunas necessárias ausentes")
 
-    # 3. Salvar o dataset
     df_final.to_csv('consolidated_data_by_country.csv', index=False)
     return df_final
 
 def mainMenu():
-    print(" Main Menu\n"\
-          "1 - Create dataset\n" \
-        "2 - Data analysis\n" \
-        "0 - Exit program\n")
+    print(" Main Menu\n"
+          "1 - Create dataset\n"
+          "2 - Data analysis\n" 
+          "3 - Linear Regression\n" 
+          "4 - Ridge Regression\n" 
+          "5 - Random Forest Regressor\n"
+          "0 - Exit program\n")
     
 def executeOption(option):
     if option == '1':
@@ -403,15 +362,120 @@ def executeOption(option):
     elif option == '2':
         df_treated = read_csv("consolidated_data_by_country.csv")
         correlation_matrix = df_treated.corr(numeric_only=True)
-        # heatmap
+
         plt.figure(figsize=(12, 10))
         sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="coolwarm", linewidths=0.5)
         plt.title("Matriz de Correlação")
         plt.show()
+    elif option == '3':
+        df = pd.read_csv("consolidated_data_by_country.csv")
+
+        x = df.drop(columns=['Country', 'US_Obesity_Reference', 'Obesity_Rate_Europe'])
+        y = df['Obesity_Rate_Europe']
+
+        print("All features")
+        calcRegLinear(x, y)
+    elif option == '4':
+        df = pd.read_csv("consolidated_data_by_country.csv")
+
+        x = df.drop(columns=['Country', 'US_Obesity_Reference', 'Obesity_Rate_Europe'])
+        y = df['Obesity_Rate_Europe']
+
+        print("All features")
+        calcRidge(x, y)
+    elif option == '5':
+        df = pd.read_csv("consolidated_data_by_country.csv")
+
+        x = df.drop(columns=['Country', 'US_Obesity_Reference', 'Obesity_Rate_Europe'])
+        y = df['Obesity_Rate_Europe']
+
+        print("All features")
+        calcRandomForestRegressor(x, y)
     elif option == '0':
         print("Exiting program...")
     else:
         print("Invalid option")
+
+def calcRegLinear(x,y):
+    scaler = StandardScaler()
+
+    X_normalized = scaler.fit_transform(x)
+
+    X_train, X_test, y_train, y_test = train_test_split(X_normalized, y, test_size=0.4, random_state=42)
+
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    print("R2 score:", r2_score(y_test, y_pred))
+    print("MAE:", mean_absolute_error(y_test, y_pred))
+    print("RMSE:", root_mean_squared_error(y_test, y_pred))
+
+    resultados = pd.DataFrame({
+        'Real': y_test.values,
+        'Previsto': y_pred,
+        'Erro (Previsto - Real)': y_pred - y_test.values,
+        'Erro Absoluto': abs(y_pred - y_test.values)
+    })
+
+    resultados = resultados.reset_index(drop=True)
+
+    print(resultados)
+
+def calcRidge(x,y):
+    scaler = StandardScaler()
+
+    X_normalized = scaler.fit_transform(x)
+
+    X_train, X_test, y_train, y_test = train_test_split(X_normalized, y, test_size=0.4, random_state=42)
+
+    model = Ridge(alpha=1.0) 
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    print("R2 score:", r2_score(y_test, y_pred))
+    print("MAE:", mean_absolute_error(y_test, y_pred))
+    print("RMSE:", root_mean_squared_error(y_test, y_pred))
+
+    resultados = pd.DataFrame({
+        'Real': y_test.values,
+        'Previsto': y_pred,
+        'Erro (Previsto - Real)': y_pred - y_test.values,
+        'Erro Absoluto': abs(y_pred - y_test.values)
+    })
+
+    resultados = resultados.reset_index(drop=True)
+
+    print(resultados)
+
+def calcRandomForestRegressor(x,y):
+    scaler = StandardScaler()
+
+    X_normalized = scaler.fit_transform(x)
+
+    X_train, X_test, y_train, y_test = train_test_split(X_normalized, y, test_size=0.4, random_state=42)
+
+    model = RandomForestRegressor(n_estimators=100, random_state=42)
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    print("R2 score:", r2_score(y_test, y_pred))
+    print("MAE:", mean_absolute_error(y_test, y_pred))
+    print("RMSE:", root_mean_squared_error(y_test, y_pred))
+
+    resultados = pd.DataFrame({
+        'Real': y_test.values,
+        'Previsto': y_pred,
+        'Erro (Previsto - Real)': y_pred - y_test.values,
+        'Erro Absoluto': abs(y_pred - y_test.values)
+    })
+
+    resultados = resultados.reset_index(drop=True)
+
+    print(resultados)
 
 option = -1
 while(option!='0'):
