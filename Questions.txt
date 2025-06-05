@@ -1,0 +1,9 @@
+A densidade de fast food (por área ou por 100 mil habitantes) está associada com a taxa de obesidade?
+Há relação entre o consumo de bebidas alcoólicas e a obesidade nos países europeus?
+Países com maior nível de atividade física (≥4x por semana) têm menores taxas de obesidade?
+O consumo de alimentos ultraprocessados, como snacks e sobremesas, está positivamente correlacionado com a obesidade?
+Quais grupos alimentares têm correlação negativa com a obesidade, ou seja, podem estar ligados a hábitos alimentares mais saudáveis?
+A densidade populacional influencia a concentração de restaurantes fast food?
+Há diferença clara de perfil alimentar entre países com altas e baixas taxas de obesidade?
+A riqueza de um país (PIB) está correlacionada com a taxa de obesidade?
+O número de restaurantes McDonald's ou Burger King por país está ligado ao nível de obesidade?

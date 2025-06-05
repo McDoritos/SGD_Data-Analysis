@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 def read_csv(file_name):
     df = pd.read_csv(file_name)
@@ -153,6 +155,13 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
     print("Dados globais de restaurantes FF tratados:")
     print(df_bk)
     df_mac = df_mac[['Country','Number of MacDonald restaurants']]
+    df_mac['Number of MacDonald restaurants'] = (
+        df_mac['Number of MacDonald restaurants']
+        .astype(str)
+        .str.replace(',', '', regex=False)
+        .replace('nan', np.nan)
+        .astype(float)
+    )
     print(df_mac)
 
     common_countries = set(df_bk['Country']).intersection(set(df_mac['Country']))
@@ -173,6 +182,8 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
     # 7. Tratamento de datasets de obesidade
     # -------------------------------
     df_obee = df_obee[['Country','Overweight']]
+    # Remove linhas que contêm ":" na coluna 'Overweight'
+    df_obee = df_obee[~df_obee['Overweight'].astype(str).str.contains(':')]
     print(df_obee)
     df_obea = df_obea[
         (df_obea['Survey Years'] == '2017-2018') &
@@ -188,6 +199,10 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
     # 8. Tratamento de datasets de Atividade fisica
     # -------------------------------
     df_pae = df_pae[['Country','At least 4 times']]
+    
+
+    # Remove valores com ":"
+    df_pae = df_pae[~df_pae['At least 4 times'].astype(str).str.contains(':')]
     print(df_pae)
     df_paa = df_paa[
         (df_paa['YearStart'] == 2017)
@@ -285,7 +300,21 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
     other_cols = [col for col in df_final.columns if col not in first_cols]
     df_final = df_final[first_cols + other_cols]
 
-    # Ordenar e limpar
+    # Remoção e tratamento de dados e colunas
+
+    df_final = df_final[df_final['Obesity_Rate_Europe'].notna()]
+    df_final = df_final[df_final['Consumo_Alcoholic_beverages'].notna()]
+    df_final = df_final.drop(columns=['Consumo_Food_for_infants_and_small_children'])
+    df_final = df_final.drop(columns=['Consumo_Products_for_special_nutritional_use'])
+    df_final['Physical_Activity_4plus_times'] = df_final['Physical_Activity_4plus_times'].fillna(
+    round(df_final['Physical_Activity_4plus_times'].mean(),2))
+    # Verificar países removidos (opcional)
+    removed_countries = set(all_countries) - set(df_final['Country'])
+    if removed_countries:
+        print("\nPaíses removidos por falta de dados de obesidade:")
+        print(sorted(removed_countries))
+
+    # Ordenar e reindexar após filtragem
     df_final = df_final.sort_values('Country').reset_index(drop=True)
 
     # Verificar resultado
@@ -328,32 +357,14 @@ def create_features(df_final):
                 np.nan
             )
 
-            df_final['BK_vs_McD_ratio'] = np.where(
-                df_final['McDonalds_Count'] > 0,
-                df_final['BurgerKing_Count'] / df_final['McDonalds_Count'],
-                np.nan
-            )
-
-            df_final['McDonalds_percentage'] = np.where(
-                df_final['Total_FastFood_Count'] > 0,
-                (df_final['McDonalds_Count'] / df_final['Total_FastFood_Count']) * 100,
-                np.nan
-            )
-
-        # 🔢 Arredondar os valores numéricos calculados
-        round_cols = ['FastFood_per_100k', 'FastFood_density_per_1000km2',
-                    'BK_vs_McD_ratio', 'McDonalds_percentage']
+        round_cols = ['FastFood_per_100k', 'FastFood_density_per_1000km2']
         df_final[round_cols] = df_final[round_cols].round(2)
 
-        # Reordenar colunas
         ff_cols = ['Country', 'Population', 'Area_km2',
                 'BurgerKing_Count', 'McDonalds_Count', 'Total_FastFood_Count'] + round_cols
         other_cols = [col for col in df_final.columns if col not in ff_cols]
         df_final = df_final[ff_cols + other_cols]
 
-        # Mostrar estatísticas
-        print("\nResumo das métricas calculadas:")
-        print(df_final[round_cols].describe())
     else:
         print("Aviso: Não foi possível calcular as métricas - colunas necessárias ausentes")
 
@@ -361,26 +372,49 @@ def create_features(df_final):
     df_final.to_csv('consolidated_data_by_country.csv', index=False)
     return df_final
 
-foodDiet_america = read_csv("Datasets/Treated/Food-diet_America.csv")
-foodDiet_europe = read_xlsx("Datasets/Treated/Food-diet_Europe.xlsx","L1_Consuming_days_only_g_day_bw")
-foodComposition = read_csv("Datasets/Treated/Food-Composition_FoodexL1.csv")
+def mainMenu():
+    print(" Main Menu\n"\
+          "1 - Create dataset\n" \
+        "2 - Data analysis\n" \
+        "0 - Exit program\n")
+    
+def executeOption(option):
+    if option == '1':
+        foodDiet_america = read_csv("Datasets/Treated/Food-diet_America.csv")
+        foodDiet_europe = read_xlsx("Datasets/Treated/Food-diet_Europe.xlsx","L1_Consuming_days_only_g_day_bw")
+        foodComposition = read_csv("Datasets/Treated/Food-Composition_FoodexL1.csv")
 
-gdp_global = read_csv("Datasets/Treated/GDP-Growth_Countries.csv")
-gdp_europe = read_xlsx("Datasets/Treated/GDP-Growth_Europe.xlsx",'Folha1')
+        gdp_global = read_csv("Datasets/Treated/GDP-Growth_Countries.csv")
+        gdp_europe = read_xlsx("Datasets/Treated/GDP-Growth_Europe.xlsx",'Folha1')
 
-bk_global = read_csv("Datasets/Treated/Num-BKs_Countries.csv")
-mac_global = read_csv("Datasets/Treated/Num-MACs_Countries.csv")
+        bk_global = read_csv("Datasets/Treated/Num-BKs_Countries.csv")
+        mac_global = read_csv("Datasets/Treated/Num-MACs_Countries.csv")
 
-obesity_america = read_csv("Datasets/Treated/Obesity_America.csv")
-obesity_europe = read_xlsx("Datasets/Treated/Obesity_Europe.xlsx","Folha1")
+        obesity_america = read_csv("Datasets/Treated/Obesity_America.csv")
+        obesity_europe = read_xlsx("Datasets/Treated/Obesity_Europe.xlsx","Folha1")
 
-physicalActivity_america = read_xlsx("Datasets/Treated/Physical-Activity_America.xlsx","Nutrition__Physical_Activity__a")
-physicalActivity_europe = read_xlsx("Datasets/Treated/Physical-Activity_Europe.xlsx","Folha1")
+        physicalActivity_america = read_xlsx("Datasets/Treated/Physical-Activity_America.xlsx","Nutrition__Physical_Activity__a")
+        physicalActivity_europe = read_xlsx("Datasets/Treated/Physical-Activity_Europe.xlsx","Folha1")
 
-Population_europe = read_csv("Datasets/Treated/Population_Europe.csv")
+        Population_europe = read_csv("Datasets/Treated/Population_Europe.csv")
+        df_treated = create_dataset_countries(foodDiet_america,foodDiet_europe,gdp_global,gdp_europe,bk_global,mac_global,obesity_america,obesity_europe,physicalActivity_america,physicalActivity_europe,foodComposition,Population_europe)
+        df_final = create_features(df_treated)
+        print(df_final)
+    elif option == '2':
+        df_treated = read_csv("consolidated_data_by_country.csv")
+        correlation_matrix = df_treated.corr(numeric_only=True)
+        # heatmap
+        plt.figure(figsize=(12, 10))
+        sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="coolwarm", linewidths=0.5)
+        plt.title("Matriz de Correlação")
+        plt.show()
+    elif option == '0':
+        print("Exiting program...")
+    else:
+        print("Invalid option")
 
-df_treated = create_dataset_countries(foodDiet_america,foodDiet_europe,gdp_global,gdp_europe,bk_global,mac_global,obesity_america,obesity_europe,physicalActivity_america,physicalActivity_europe,foodComposition,Population_europe)
-
-df_final = create_features(df_treated)
-
-print(df_final)
+option = -1
+while(option!='0'):
+    mainMenu()
+    option = input("Choose an option: ")
+    executeOption(option)
