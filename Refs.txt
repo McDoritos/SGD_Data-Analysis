@@ -32,4 +32,6 @@ https://ec.europa.eu/eurostat/databrowser/view/tec00115/default/table?lang=en
 
 # World Population
 https://data.worldbank.org/indicator/EN.POP.DNST
+https://data.worldbank.org/indicator/AG.SRF.TOTL.K2
+https://data.worldbank.org/indicator/SP.POP.TOTL
 https://pt.wikipedia.org/wiki/Lista_de_pa%C3%ADses_por_densidade_populacional

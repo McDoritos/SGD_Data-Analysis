@@ -361,12 +361,148 @@ def executeOption(option):
         print(df_final)
     elif option == '2':
         df_treated = read_csv("consolidated_data_by_country.csv")
+        print(df_treated.columns)
+        # Matriz de Correlação
         correlation_matrix = df_treated.corr(numeric_only=True)
-
         plt.figure(figsize=(12, 10))
         sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="coolwarm", linewidths=0.5)
         plt.title("Matriz de Correlação")
         plt.show()
+
+        # Histograma: Distribuição da Taxa de Obesidade
+        plt.figure(figsize=(10, 6))
+        sns.histplot(df_treated['Obesity_Rate_Europe'], bins=15, kde=True)
+        plt.title("Distribuição da Taxa de Obesidade")
+        plt.xlabel("Taxa de Obesidade")
+        plt.ylabel("Frequência")
+        plt.show()
+
+        fig, axes = plt.subplots(2, 2, figsize=(18, 12))
+
+        # Gráfico 1: Legumes, Nozes e Sementes
+        sns.regplot(
+            data=df_treated,
+            x='Consumo_Legumes_nuts_and_oilseeds',
+            y='Obesity_Rate_Europe',
+            scatter_kws={'s': 70},
+            line_kws={'color': 'green'},
+            ax=axes[0, 0]
+        )
+        axes[0, 0].set_title("Legumes, Nozes e Sementes vs. Obesidade")
+        axes[0, 0].set_xlabel("")
+        axes[0, 0].set_ylabel("Taxa de Obesidade")
+
+        # Gráfico 2: Água Potável
+        sns.regplot(
+            data=df_treated,
+            x='Consumo_Drinking_water_water_without_any_additives_except',
+            y='Obesity_Rate_Europe',
+            scatter_kws={'s': 70},
+            line_kws={'color': 'blue'},
+            ax=axes[0, 1]
+        )
+        axes[0, 1].set_title("Água Potável vs. Obesidade")
+        axes[0, 1].set_xlabel("")
+        axes[0, 1].set_ylabel("Taxa de Obesidade")
+
+        # Gráfico 3: Leite e Derivados
+        sns.regplot(
+            data=df_treated,
+            x='Consumo_Milk_and_dairy_products',
+            y='Obesity_Rate_Europe',
+            scatter_kws={'s': 70},
+            line_kws={'color': 'purple'},
+            ax=axes[1, 0]
+        )
+        axes[1, 0].set_title("Leite e Derivados vs. Obesidade")
+        axes[1, 0].set_xlabel("")
+        axes[1, 0].set_ylabel("Taxa de Obesidade")
+
+        # Gráfico 4: Alimentos Compostos / Congelados
+        sns.regplot(
+            data=df_treated,
+            x='Consumo_Composite_food_including_frozen_products',
+            y='Obesity_Rate_Europe',
+            scatter_kws={'s': 70},
+            line_kws={'color': 'orange'},
+            ax=axes[1, 1]
+        )
+        axes[1, 1].set_title("Alimentos Compostos/Congelados vs. Obesidade")
+        axes[1, 1].set_xlabel("")
+        axes[1, 1].set_ylabel("Taxa de Obesidade")
+
+        # Layout
+        plt.tight_layout()
+        plt.show()
+
+        # Gráfico Densidade Populacional vs. Taxa de Obesidade
+        plt.figure(figsize=(10, 6))
+        sns.regplot(data=df_treated, x='Pop_Density', y='Obesity_Rate_Europe', scatter_kws={'s': 100}, line_kws={'color': 'red'})
+        plt.title("Relação entre Densidade Populacional e Taxa de Obesidade")
+        plt.xlabel("Densidade Populacional")
+        plt.ylabel("Taxa de Obesidade")
+        plt.show()
+
+        # Gráfico PIB vs. Consumo de Bebidas Alcoólicas
+        plt.figure(figsize=(10, 6))
+        sns.regplot(data=df_treated, x='GDP_2017', y='Consumo_Alcoholic_beverages', scatter_kws={'s': 100}, line_kws={'color': 'red'})
+        plt.title("Relação entre PIB e Consumo de Bebidas Alcoólicas")
+        plt.xlabel("PIB")
+        plt.ylabel("Consumo de Bebidas Alcoólicas")
+        plt.show()
+
+        fig, axes = plt.subplots(1, 3, figsize=(20, 6), sharex=True)
+
+        # Gráfico 1: Atividade Física vs. Consumo de Bebidas Alcoólicas
+        sns.regplot(
+            data=df_treated,
+            x='Physical_Activity_4plus_times',
+            y='Consumo_Alcoholic_beverages',
+            scatter_kws={'s': 60},
+            line_kws={'color': 'blue'},
+            ax=axes[0]
+        )
+        axes[0].set_title("Atividade Física vs. Bebidas Alcoólicas")
+        axes[0].set_xlabel("Atividade Física (4+ vezes/semana)")
+        axes[0].set_ylabel("Consumo de Bebidas Alcoólicas")
+
+        # Gráfico 2: Atividade Física vs. Consumo de Bebidas Não Alcoólicas
+        sns.regplot(
+            data=df_treated,
+            x='Physical_Activity_4plus_times',
+            y='Consumo_Non-alcoholic_beverages_excepting_milk_based_beve',
+            scatter_kws={'s': 60},
+            line_kws={'color': 'red'},
+            ax=axes[1]
+        )
+        axes[1].set_title("Atividade Física vs. Bebidas Não Alcoólicas")
+        axes[1].set_xlabel("Atividade Física (4+ vezes/semana)")
+        axes[1].set_ylabel("Consumo de Bebidas Não Alcoólicas")
+
+        # Gráfico 3: Atividade Física vs. Consumo de Peixes e Frutos do Mar
+        sns.regplot(
+            data=df_treated,
+            x='Physical_Activity_4plus_times',
+            y='Consumo_Fish_and_other_seafood_including_amphibians_rept',
+            scatter_kws={'s': 60},
+            line_kws={'color': 'green'},
+            ax=axes[2]
+        )
+        axes[2].set_title("Atividade Física vs. Consumo de Peixes e Frutos do Mar")
+        axes[2].set_xlabel("Atividade Física (4+ vezes/semana)")
+        axes[2].set_ylabel("Consumo de Peixes e Frutos do Mar")
+
+        plt.tight_layout()
+        plt.show()
+
+        # Gráfico Densidade Populacional vs. Densidade de Fast Food
+        plt.figure(figsize=(10, 6))
+        sns.regplot(data=df_treated, x='Pop_Density', y='FastFood_density_per_1000km2', scatter_kws={'s': 100}, line_kws={'color': 'red'})
+        plt.title("Relação entre Densidade Populacional e Densidade de Fast Food")
+        plt.xlabel("Densidade Populacional")
+        plt.ylabel("Densidade de Fast Food por 1000 km²")
+        plt.show()
+
     elif option == '3':
         df = pd.read_csv("consolidated_data_by_country.csv")
 
