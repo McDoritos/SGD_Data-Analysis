@@ -24,7 +24,7 @@ def read_xlsx(file_name, spreadsheet):
 
 def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,df_obee,df_paa,df_pae,df_fc,df_pope):
     # -------------------------------
-    # 1. Seleção de nutrientes americanos para o dataset americano (df_fda)
+    # 1. Seleção de nutrientes para o dataset americano
     # -------------------------------
     df_fda_treated = df_fda[
         (df_fda['Survey Years'] == '2017-2018') &
@@ -34,11 +34,11 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
     ]
     df_fda_treated = df_fda_treated[['Sex','Age Group','Nutrient', 'Mean']]
 
-    print("Dados americanos de food diet tratados (df_fda_treated):")
+    print("Dados americanos de food diet tratados:")
     print(df_fda_treated)
 
     # -------------------------------
-    # 2. Seleção de surveys europeus relevantes (df_fde)
+    # 2. Seleção de surveys europeus relevantes
     # -------------------------------
     selected_surveys = [
         'Austrian Study on Nutritional Status 2010-12 - Adults',
@@ -83,12 +83,11 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
 
     df_all_class = df_all_class[['Country', 'Pop Class', 'Foodex L1', 'Mean']]
 
-    # Concatenar dados originais filtrados com agregados (Pop Class = 'All')
     df_fde_treated = pd.concat([df_filtered, df_all_class], ignore_index=True)
 
     df_fde_treated = df_fde_treated[df_fde_treated['Pop Class'] == 'All']
 
-    print("Dados europeus de food diet tratados (df_fde_treated):")
+    print("Dados europeus de food diet tratados:")
     print(df_fde_treated)
 
     # -------------------------------
@@ -147,7 +146,7 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
     # 7. Tratamento de datasets de obesidade
     # -------------------------------
     df_obee = df_obee[['Country','Overweight']]
-    # Remove linhas que contêm ":" na coluna 'Overweight'
+    # Remover linhas com caracter  ":" na coluna 'Overweight'
     df_obee = df_obee[~df_obee['Overweight'].astype(str).str.contains(':')]
     print(df_obee)
     df_obea = df_obea[
@@ -187,7 +186,7 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
 
     df_final = pd.DataFrame({'Country': sorted(list(all_countries))})
 
-    # 2. Categorias alimentares para colunas
+    # 2. Transposição de Categorias alimentares para colunas
     food_consumption_pivoted = df_fde_treated.pivot_table(
         index='Country',
         columns='Foodex L1',
@@ -240,7 +239,7 @@ def create_dataset_countries(df_fda,df_fde,df_gdpg,df_gdpe,df_bk,df_mac,df_obea,
     us_obesity = df_obea['Percent'].values[0] if len(df_obea) > 0 else None
     df_final['US_Obesity_Reference'] = us_obesity
 
-    # 9. ADIÇÃO DOS DADOS POPULACIONAIS COMPLETOS
+    # 9. Adição dos dados populacionais
     df_pope_clean = df_pope[['Country', 'Population Density', 'Population', 'Area']].copy()
 
     # Padronizar nomes de países
@@ -288,10 +287,8 @@ def create_features(df_final):
     cols_to_convert = ['BurgerKing_Count', 'McDonalds_Count', 'Population', 'Area_km2']
 
     for col in cols_to_convert:
-        if col in df_final.columns:
-            df_final[col] = pd.to_numeric(df_final[col].astype(str).str.replace(',', '.'), errors='coerce')
-        else:
-            print(f"Aviso: Coluna {col} não encontrada no DataFrame")
+        df_final[col] = pd.to_numeric(df_final[col].astype(str).str.replace(',', '.'), errors='coerce')
+
 
     if all(col in df_final.columns for col in cols_to_convert):
         missing_values = df_final[cols_to_convert].isnull().sum()
@@ -323,7 +320,7 @@ def create_features(df_final):
         df_final = df_final[ff_cols + other_cols]
 
     else:
-        print("Aviso: Não foi possível calcular as métricas - colunas necessárias ausentes")
+        print("Não foi possível calcular as métricas")
 
     df_final.to_csv('consolidated_data_by_country.csv', index=False)
     return df_final
@@ -369,7 +366,7 @@ def executeOption(option):
         plt.title("Matriz de Correlação")
         plt.show()
 
-        # Histograma: Distribuição da Taxa de Obesidade
+        # Distribuição da Taxa de Obesidade
         plt.figure(figsize=(10, 6))
         sns.histplot(df_treated['Obesity_Rate_Europe'], bins=15, kde=True)
         plt.title("Distribuição da Taxa de Obesidade")
@@ -379,7 +376,7 @@ def executeOption(option):
 
         fig, axes = plt.subplots(2, 2, figsize=(18, 12))
 
-        # Gráfico 1: Legumes, Nozes e Sementes
+        # Gráfico Legumes, Nozes e Sementes
         sns.regplot(
             data=df_treated,
             x='Consumo_Legumes_nuts_and_oilseeds',
@@ -392,7 +389,7 @@ def executeOption(option):
         axes[0, 0].set_xlabel("")
         axes[0, 0].set_ylabel("Taxa de Obesidade")
 
-        # Gráfico 2: Água Potável
+        # Gráfico Água Potável
         sns.regplot(
             data=df_treated,
             x='Consumo_Drinking_water_water_without_any_additives_except',
@@ -405,7 +402,7 @@ def executeOption(option):
         axes[0, 1].set_xlabel("")
         axes[0, 1].set_ylabel("Taxa de Obesidade")
 
-        # Gráfico 3: Leite e Derivados
+        # Gráfico Leite e Derivados
         sns.regplot(
             data=df_treated,
             x='Consumo_Milk_and_dairy_products',
@@ -418,7 +415,7 @@ def executeOption(option):
         axes[1, 0].set_xlabel("")
         axes[1, 0].set_ylabel("Taxa de Obesidade")
 
-        # Gráfico 4: Alimentos Compostos / Congelados
+        # Gráfico Alimentos Compostos / Congelados
         sns.regplot(
             data=df_treated,
             x='Consumo_Composite_food_including_frozen_products',
@@ -431,7 +428,6 @@ def executeOption(option):
         axes[1, 1].set_xlabel("")
         axes[1, 1].set_ylabel("Taxa de Obesidade")
 
-        # Layout
         plt.tight_layout()
         plt.show()
 
@@ -453,7 +449,7 @@ def executeOption(option):
 
         fig, axes = plt.subplots(1, 3, figsize=(20, 6), sharex=True)
 
-        # Gráfico 1: Atividade Física vs. Consumo de Bebidas Alcoólicas
+        # Gráfico Atividade Física vs. Consumo de Bebidas Alcoólicas
         sns.regplot(
             data=df_treated,
             x='Physical_Activity_4plus_times',
@@ -466,7 +462,7 @@ def executeOption(option):
         axes[0].set_xlabel("Atividade Física (4+ vezes/semana)")
         axes[0].set_ylabel("Consumo de Bebidas Alcoólicas")
 
-        # Gráfico 2: Atividade Física vs. Consumo de Bebidas Não Alcoólicas
+        # Gráfico Atividade Física vs. Consumo de Bebidas Não Alcoólicas
         sns.regplot(
             data=df_treated,
             x='Physical_Activity_4plus_times',
@@ -479,7 +475,7 @@ def executeOption(option):
         axes[1].set_xlabel("Atividade Física (4+ vezes/semana)")
         axes[1].set_ylabel("Consumo de Bebidas Não Alcoólicas")
 
-        # Gráfico 3: Atividade Física vs. Consumo de Peixes e Frutos do Mar
+        # Gráfico Atividade Física vs. Consumo de Peixes e Frutos do Mar
         sns.regplot(
             data=df_treated,
             x='Physical_Activity_4plus_times',
